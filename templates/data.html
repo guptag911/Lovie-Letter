@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'data' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+        <label class="form-label">Love Letter</label>
+        <input type="textarea" name="letter" class="form-control" placeholder="Show some love for your life partner" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Your Image</label>
+            <input type="file" name="img" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Some beautifull words for your partner in your own voice</label>
+            <input type="file" name="audio" class="form-control" accept="audio/mp3,audio/*;capture=microphone">
+        </div>
+        <input type="text" name="uid" value={{user}} hidden>
+        <button type="submit" class="btn btn-outline-primary">Generate Love Letter</button>
+    </form>
+</div>
+{% endblock %}
